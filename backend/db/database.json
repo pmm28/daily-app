@@ -1,0 +1,89 @@
+{
+  "users": [
+    {
+      "id": "e2571163-6a47-4f00-abc6-10999b34909a",
+      "name": "o",
+      "email": "o",
+      "password": "$2a$10$KdmiAz50UXn2th.Wxi82lutKdBtVLSdo/0ggl9cXu4Hls68PSrNVO",
+      "joinDate": "2026-03-24T05:49:01.254Z"
+    },
+    {
+      "id": "06d4ea4f-9a94-4dd1-8cd0-8e2f1bbfc660",
+      "name": "pim",
+      "email": "pim@gmail.com",
+      "password": "$2a$10$6Qzi/fzh/CA/NbvLxdfw3OfT1UvoN432Ahh7DrTLp7bVPj1Mp8eRy",
+      "joinDate": "2026-03-24T05:52:41.728Z"
+    }
+  ],
+  "entries": [
+    {
+      "id": "9f263c1c-1264-468f-9198-67b71793f1d4",
+      "userId": "e2571163-6a47-4f00-abc6-10999b34909a",
+      "date": "2026-03-24",
+      "diary": "Test 1",
+      "mood": "happy",
+      "createdAt": "2026-03-24T05:49:22.569Z",
+      "updatedAt": "2026-03-24T05:49:25.186Z"
+    },
+    {
+      "id": "e6511df9-a5bf-43b4-8c35-242d671f03cd",
+      "userId": "06d4ea4f-9a94-4dd1-8cd0-8e2f1bbfc660",
+      "date": "2026-03-24",
+      "diary": "T1",
+      "mood": "happy",
+      "createdAt": "2026-03-24T05:53:05.163Z",
+      "updatedAt": "2026-03-24T05:53:06.448Z"
+    },
+    {
+      "id": "dba1c232-af55-451b-9d82-48c3d6faa216",
+      "userId": "06d4ea4f-9a94-4dd1-8cd0-8e2f1bbfc660",
+      "date": "2026-03-23",
+      "diary": "T2",
+      "mood": "tired",
+      "createdAt": "2026-03-24T05:53:19.770Z",
+      "updatedAt": "2026-03-24T05:53:23.760Z"
+    }
+  ],
+  "activities": [
+    {
+      "id": "217706fe-9f35-4a73-a2b9-48ca2934e3aa",
+      "entryId": "9f263c1c-1264-468f-9198-67b71793f1d4",
+      "userId": "e2571163-6a47-4f00-abc6-10999b34909a",
+      "title": "high",
+      "cat": "study",
+      "tp": "morning",
+      "order": 0,
+      "createdAt": "2026-03-24T05:49:30.061Z"
+    },
+    {
+      "id": "f80aba80-d378-4639-910e-952e22525a67",
+      "entryId": "9f263c1c-1264-468f-9198-67b71793f1d4",
+      "userId": "e2571163-6a47-4f00-abc6-10999b34909a",
+      "title": "huhu",
+      "cat": "exercise",
+      "tp": "afternoon",
+      "order": 0,
+      "createdAt": "2026-03-24T05:49:34.598Z"
+    },
+    {
+      "id": "7dcd028f-a30e-49fa-abef-63802dd01585",
+      "entryId": "9f263c1c-1264-468f-9198-67b71793f1d4",
+      "userId": "e2571163-6a47-4f00-abc6-10999b34909a",
+      "title": "k;jlkj",
+      "cat": "exercise",
+      "tp": "noon",
+      "order": 0,
+      "createdAt": "2026-03-24T05:49:37.917Z"
+    },
+    {
+      "id": "7e9033fd-7c8f-4054-86e1-11b9257ef46b",
+      "entryId": "dba1c232-af55-451b-9d82-48c3d6faa216",
+      "userId": "06d4ea4f-9a94-4dd1-8cd0-8e2f1bbfc660",
+      "title": "1",
+      "cat": "study",
+      "tp": "morning",
+      "order": 0,
+      "createdAt": "2026-03-24T05:53:22.506Z"
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Quicksand', sans-serif;
+    background-color: #faf7f2;
+    color: #2a2420;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  textarea { resize: none; }
+}
+
+@layer utilities {
+  .bg-line-texture {
+    background-image: repeating-linear-gradient(
+      transparent, transparent 27px,
+      rgba(232,224,212,0.25) 27px,
+      rgba(232,224,212,0.25) 28px
+    );
+  }
+  .font-serif { font-family: 'Playfair Display', Georgia, serif; }
+  .animate-rise { animation: riseIn 0.5s cubic-bezier(0.22,1,0.36,1) both; }
+  .animate-slide { animation: slideIn 0.22s ease both; }
+}
+
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(24px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(16px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Ambient background */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 60% 50% at 90% 10%, rgba(242,196,184,.22) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 10% 90%, rgba(184,205,184,.18) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 30% at 50% 50%, rgba(212,200,232,.08) 0%, transparent 70%);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #e8e0d4; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #d4c8bc; }
+
+/* Calendar day */
+.cal-day { min-height: 80px; }
+@media (max-width: 640px) { .cal-day { min-height: 56px; } }
