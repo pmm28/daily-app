@@ -50,6 +50,7 @@ export default function CalendarPage() {
         <h1 className="font-serif text-4xl font-normal text-ink">
           {MONTHS_L[calM]} <em className="italic text-rose-deep">{calY}</em>
         </h1>
+
         <div className="flex items-center gap-2">
           <button
             onClick={() => { setCalY(today.getFullYear()); setCalM(today.getMonth()) }}

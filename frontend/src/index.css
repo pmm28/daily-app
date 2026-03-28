@@ -25,6 +25,9 @@
   .font-serif { font-family: 'Playfair Display', Georgia, serif; }
   .animate-rise { animation: riseIn 0.5s cubic-bezier(0.22,1,0.36,1) both; }
   .animate-slide { animation: slideIn 0.22s ease both; }
+  .font-serif {
+    font-variant-numeric: lining-nums;
+  }
 }
 
 @keyframes riseIn {

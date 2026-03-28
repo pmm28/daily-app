@@ -1,15 +1,22 @@
 import { useState } from 'react'
-import { useNavigate, Link } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { BookOpen, ArrowLeft, Eye, EyeOff } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
 
 function AuthCard({ title, subtitle, children, switchText, switchLink, switchLabel }) {
+  const navigate = useNavigate()
+  const location = useLocation()
+  const handleBack = () => {
+  const from = location.state?.from
+  navigate(from || '/')
+}
   return (
     <div className="min-h-screen flex items-center justify-center px-5 py-10 relative z-[1]">
       <div className="bg-white border border-border-soft rounded-3xl p-11 w-full max-w-md shadow-2xl animate-rise max-sm:p-7">
-        <Link to="/" className="inline-flex items-center gap-1.5 text-[13px] font-medium text-ink-soft hover:text-rose-deep mb-7 transition-colors">
+        <button onClick={handleBack} className="inline-flex items-center gap-1.5 text-[13px] font-medium text-ink-soft hover:text-rose-deep mb-7 transition-colors">
           <ArrowLeft size={15} /> Back
-        </Link>
+        </button>
+
         <div className="flex items-center gap-2.5 mb-7">
           <div className="w-9 h-9 rounded-[10px] bg-gradient-to-br from-rose to-rose-mid flex items-center justify-center shadow-sm">
             <BookOpen size={18} className="text-white" />
@@ -21,7 +28,12 @@ function AuthCard({ title, subtitle, children, switchText, switchLink, switchLab
         {children}
         <p className="text-center mt-5 text-[13px] text-ink-soft">
           {switchText}{' '}
-          <Link to={switchLink} className="text-rose-deep font-bold hover:underline">{switchLabel}</Link>
+          <span
+            onClick={() => navigate(switchLink, { state: { from: location.state?.from } })}
+            className="text-rose-deep font-bold hover:underline cursor-pointer"
+          >
+            {switchLabel}
+          </span>
         </p>
       </div>
     </div>
@@ -53,6 +65,7 @@ function Field({ label, type = 'text', value, onChange, placeholder, maxLength }
   )
 }
 
+// -------------------------- Sign up --------------------------
 export function SignupPage() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -75,7 +88,7 @@ export function SignupPage() {
 
   return (
     <AuthCard title="Begin your journal" subtitle="Just a name and email — your entries stay on your device." switchText="Already have an account?" switchLink="/auth/login" switchLabel="Sign in">
-      <Field label="Your name" value={name} onChange={setName} placeholder="What should we call you?" maxLength={40} />
+      <Field label="Username" value={name} onChange={setName} placeholder="What should we call you?" maxLength={40} />
       <Field label="Email" type="email" value={email} onChange={setEmail} placeholder="your@email.com" />
       <Field label="Password" type="password" value={password} onChange={setPassword} placeholder="Something you'll remember" />
       {err && <p className="text-red-500 text-sm mb-3">{err}</p>}
@@ -90,6 +103,7 @@ export function SignupPage() {
   )
 }
 
+// -------------------------- Login --------------------------
 export function LoginPage() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -110,7 +124,7 @@ export function LoginPage() {
   }
 
   return (
-    <AuthCard title="Welcome back 🌸" subtitle="Your journal is right where you left it." switchText="New here?" switchLink="/auth/signup" switchLabel="Create a journal">
+    <AuthCard title="Welcome back" subtitle="Your journal is right where you left it." switchText="New here?" switchLink="/auth/signup" switchLabel="Create a journal">
       <Field label="Email" type="email" value={email} onChange={setEmail} placeholder="your@email.com" />
       <Field label="Password" type="password" value={password} onChange={setPassword} placeholder="Your password" />
       {err && <p className="text-red-500 text-sm mb-3">{err}</p>}

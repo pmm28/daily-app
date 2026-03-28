@@ -1,11 +1,11 @@
-import { BookOpen, CalendarDays, Sparkles, LogOut, LogIn } from 'lucide-react'
+import { BookOpen, CalendarDays, Sparkles, LogOut, LogIn , User } from 'lucide-react'
 import { useAuth } from '../../context/AuthContext'
 import { useNavigate, useLocation } from 'react-router-dom'
 
 const navItems = [
   { path: '/app/today', icon: BookOpen, label: 'Today' },
   { path: '/app/calendar', icon: CalendarDays, label: 'Calendar' },
-  { path: '/app/profile', icon: Sparkles, label: 'Profile' },
+  { path: '/app/profile', icon: User, label: 'Profile' },
 ]
 
 export default function Sidebar() {
@@ -14,19 +14,34 @@ export default function Sidebar() {
   const location = useLocation()
 
   const handleLogout = () => {
-    const keep = confirm('Keep your journal data for when you return?\n\nOK = keep data\nCancel = clear everything')
-    logout(keep)
+  const isConfirm = confirm('Are you sure you want to log out?')
+
+  if (isConfirm) {
+    logout()
     navigate('/')
   }
+}
 
   return (
     <aside className="w-[220px] min-w-[220px] bg-parchment border-r border-border flex flex-col py-7 fixed left-0 top-0 h-screen z-50 shadow-sm max-md:w-16 max-md:min-w-[64px]">
+
       {/* Brand */}
-      <div className="flex items-center gap-2.5 px-5 pb-7 border-b border-border mb-4 max-md:justify-center max-md:px-3">
-        <div className="w-9 h-9 rounded-[10px] bg-gradient-to-br from-rose to-rose-mid flex items-center justify-center shadow-sm flex-shrink-0">
-          <BookOpen size={18} className="text-white" />
+      <div className="flex items-center gap-3 px-5 pb-7 border-b border-border mb-4 max-md:justify-center max-md:px-3">
+        
+        {/* Logo */}
+        <div className="w-10 h-10 flex items-center justify-center flex-shrink-0">
+          <img
+            src="/logo.png"
+            alt="Dailog logo"
+            className="w-full h-full object-contain"
+          />
         </div>
-        <span className="font-serif text-xl italic text-ink max-md:hidden">Daily</span>
+
+        {/* Text */}
+        <span className="font-serif text-xl text-ink tracking-tight max-md:hidden">
+          Dai<em className="italic text-rose-deep">log</em>
+        </span>
+
       </div>
 
       {/* Nav */}
@@ -77,11 +92,11 @@ export default function Sidebar() {
 
         {isGuest && (
           <button
-            onClick={() => navigate('/auth/signup')}
+            onClick={() => navigate('/')}
             className="mt-2 w-full flex items-center justify-center gap-1.5 py-2.5 px-3 bg-rose-deep/10 border-[1.5px] border-rose-mid/40 rounded-xl text-[12.5px] font-semibold text-rose-deep hover:bg-rose-deep/20 transition-all"
           >
             <LogIn size={14} />
-            <span className="max-md:hidden">Sign up</span>
+            <span className="max-md:hidden">Exit</span>
           </button>
         )}
       </div>
