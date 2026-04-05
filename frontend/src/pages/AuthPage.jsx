@@ -16,12 +16,15 @@ function AuthCard({ title, subtitle, children, switchText, switchLink, switchLab
         <button onClick={handleBack} className="inline-flex items-center gap-1.5 text-[13px] font-medium text-ink-soft hover:text-rose-deep mb-7 transition-colors">
           <ArrowLeft size={15} /> Back
         </button>
-
-        <div className="flex items-center gap-2.5 mb-7">
-          <div className="w-9 h-9 rounded-[10px] bg-gradient-to-br from-rose to-rose-mid flex items-center justify-center shadow-sm">
-            <BookOpen size={18} className="text-white" />
+        <div className="flex items-center gap-2.5 mb-1">
+          <div className="inline-flex items-center justify-center w-10 h-10">
+            <img
+              src="/logo.png"
+              alt="Dailog logo"
+              className="w-full h-full object-contain"
+            />
           </div>
-          <span className="font-serif text-xl italic text-ink">Daily</span>
+          <span className="font-serif text-xl italic text-ink">Dailog</span>
         </div>
         <h2 className="font-serif text-3xl font-normal text-ink mb-1.5">{title}</h2>
         <p className="text-[13.5px] text-ink-soft mb-8 leading-relaxed">{subtitle}</p>
